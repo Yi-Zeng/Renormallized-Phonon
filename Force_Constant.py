@@ -40,6 +40,17 @@ def cross_corr_funs(input_dat, dn =0):
     result /= n_step
     return result
 
+def scale(para):
+    mass = 28.0855
+    if para == 'velocity':
+        result = mass*0.0001036472073616271
+    elif para == 'force':
+        result = 1
+    elif para == 'displacement':
+        result == 1
+    return result
+
+
 def main_run(para, T, dn):
     in_dat =  np.load('%s_T%s.npy'%(para, T))
     matRenorm = cross_corr_funs(in_dat, dn)
